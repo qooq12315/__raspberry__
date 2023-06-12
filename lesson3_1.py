@@ -6,7 +6,7 @@ class Window(tk.Tk):
         self.title("Hello Tkinter")
 
         label = tk.Label(self, text="Hello! 這是我的第一個視窗軟體!")
-        label.pack(fill=tk.BOTH, expand=1, padx=100, pady=50)
+        label.pack(fill=tk.BOTH, expand=1, padx=200, pady=100)
 
 
 if __name__ == "__main__":
