@@ -9,7 +9,7 @@ def create_connection(db_file):
         print(e)
 
     return conn
-  
+
 def create_table(conn):
     sql_projects = """
     CREATE TABLE IF NOT EXISTS led(
@@ -28,7 +28,7 @@ def create_table(conn):
 
 def insert_data(conn, state):
     sql_insert = """
-    INSERT INTO led(date, state) VALUES(datatime('now','localtime'), ?);
+    INSERT INTO led(date, state) VALUES(datetime('now','localtime'), ?);
     """
     cursor = conn.cursor()
     cursor.execute(sql_insert, (state,))

@@ -1,4 +1,4 @@
-import tkinter as tk
+mport tkinter as tk
 from tkinter import ttk
 from gpiozero import LED
 import datasource
@@ -54,9 +54,6 @@ class Window(tk.Tk):
 
         self.led_btn = LEDButton(self,led=redLed,text="LED 開",style='LEDClose.TButton')             
         self.led_btn.pack(pady=(10,50))
-
-    
-
 
 
 if __name__ == "__main__":
