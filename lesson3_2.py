@@ -58,11 +58,11 @@ class Window(tk.Tk):
         self.led_btn.pack(pady=(10,50))
 
 
-if __name__ == "__main__":
-    conn = datasource.create_connection('iot.db')
-    datasource.create_table(conn)
-    datasource.insert_data(conn,1)
+if __name__ == "__main__":   
+    
+    
     led = LED(23)
     led.off()
     window = Window(led)   
     window.mainloop()
+   
