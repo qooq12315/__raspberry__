@@ -1,4 +1,4 @@
-mport tkinter as tk
+import tkinter as tk
 from tkinter import ttk
 from gpiozero import LED
 import datasource
@@ -29,10 +29,12 @@ class LEDButton(ttk.Button):
             self.configure(text='LED 關')
             self.configure(style='LEDOpen.TButton')
             self.led.on()
+            datasource.insert_data(1)
         else:
             self.configure(text='LED 開')
             self.configure(style='LEDClose.TButton')
             self.led.off()
+            datasource.insert_data(0)
     
 
 class Window(tk.Tk):    

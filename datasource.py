@@ -27,6 +27,9 @@ def create_table(conn):
         print(e)
 
 def insert_data(conn, state):
+    conn = create_connection('iot.db')
+    create_table(conn)
+    
     sql_insert = """
     INSERT INTO led(date, state) VALUES(datetime('now','localtime'), ?);
     """
