@@ -1,9 +1,8 @@
 import gpiozero as zero
 import RPi.GPIO as GPIO
 from time import sleep
+from datetime import datetime
 import requests
-
-
 
 if __name__ == "__main__":
     mcp3008_ch7 = zero.MCP3008(channel=7)
@@ -17,8 +16,10 @@ if __name__ == "__main__":
             else:
                 print("光線暗") 
 
-            response = requests.get(f'https://qooq12315-studious-space-tribble-6j9wv6445qj34rxq-8000.preview.app.github.dev/raspberry?light={value}&temperature={mcp3008_ch6.value}')
-            
+            datetimeStr = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            response = requests.get(f'https://qooq12315-refactored-cod-vx6wp4qqjxgcw456-8000.preview.app.github.dev/raspberry?light={value}&temperature={mcp3008_ch6.value}')
+  
             if response.ok:
                 print("上傳資料成功")
                 print(response.text)
