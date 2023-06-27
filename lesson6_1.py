@@ -1,22 +1,31 @@
 import gpiozero as zero
 import RPi.GPIO as GPIO
 from time import sleep
+import requests
 
 
 
 if __name__ == "__main__":
-    mcp3008_ch07 = zero.MCP3008(channel=7)
-    mcp3008_ch06 = zero.MCP3008(channel=6)
+    mcp3008_ch7 = zero.MCP3008(channel=7)
+    mcp3008_ch6 = zero.MCP3008(channel=6)
     try:
         while True:
-            value = round(mcp3008_ch07.value*100)
-            print("光敏電處值: ", value)
+            value = round(mcp3008_ch7.value*100)
+            print("光敏電阻値: ", value)
             if value > 20:
-                print("LIGHT")
+                print("光線亮")
             else:
-                print("DARK")           
+                print("光線暗") 
 
-            requests.get(f'https://qooq12315-studious-space-tribble-6j9wv6445qj34rxq-8000.preview.app.github.dev/raspberry?Light={value}&temperature={mcp3008_ch6.value}')
+            response = requests.get(f'https://qooq12315-studious-space-tribble-6j9wv6445qj34rxq-8000.preview.app.github.dev/raspberry?light={value}&temperature={mcp3008_ch6.value}')
+            
+            if response.ok:
+                print("上傳資料成功")
+                print(response.text)
+            else:
+                print(response.status_code)
+
+            sleep(5)
     except KeyboardInterrupt:
         GPIO.cleanup()
         print("程序退函数")
