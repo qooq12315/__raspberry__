@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
             datetimeStr = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-            response = requests.get(f'https://qooq12315-refactored-cod-vx6wp4qqjxgcw456-8000.preview.app.github.dev/raspberry?light={value}&temperature={mcp3008_ch6.value}')
+            response = requests.get(f'https://fastapi-4y5k.onrender.com/raspberry?time={datetimeStr}&light={value}&temperature={mcp3008_ch6.value*1000}')
   
             if response.ok:
                 print("上傳資料成功")
